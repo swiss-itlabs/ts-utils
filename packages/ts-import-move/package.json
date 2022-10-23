@@ -1,0 +1,17 @@
+{
+  "name": "@itlabs/ts-import-move",
+  "version": "0.0.1",
+  "description": "move typescript imports from one package to another",
+  "author": "Admir Ramic",
+  "license": "MIT",
+  "keywords": [
+    "package",
+    "import",
+    "move",
+    "typescript",
+    "nx"
+  ],
+  "dependencies": {
+    "ts-morph": "^16.0.0"
+  }
+}
