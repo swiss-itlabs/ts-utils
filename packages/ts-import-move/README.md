@@ -14,7 +14,7 @@ In this case, you just found the tool that will helps you :)
 
 ## CLI
 
-_An CLI is coming soon._
+_A CLI is coming soon._
 
 ## Library
 
