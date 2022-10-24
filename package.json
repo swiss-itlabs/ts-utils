@@ -1,10 +1,12 @@
 {
   "name": "ts-utils",
-  "version": "0.0.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "workspaces": ["packages/ts-import-move"],
+  "workspaces": [
+    "packages/ts-import-move"
+  ],
   "dependencies": {
     "tslib": "^2.3.0"
   },
