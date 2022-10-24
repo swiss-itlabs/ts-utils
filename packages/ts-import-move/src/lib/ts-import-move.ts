@@ -36,7 +36,7 @@ export function tsImportMove(project: Project, args: TsImportMoveArgs): void {
 }
 
 function getImportDeclarations(file: SourceFile, packageName: string): ImportDeclaration[] {
-  const cleanText = (text: string) => text?.replaceAll('"', '')?.replaceAll(`'`, '');
+  const cleanText = (text: string) => text?.replaceAll('"', '')?.replaceAll(`'`, ''); // remove quotes
   return file?.getImportDeclarations()?.filter((id) => cleanText(id.getModuleSpecifier()?.getText()) === packageName);
 }
 

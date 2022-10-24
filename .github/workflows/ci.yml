@@ -30,7 +30,7 @@ jobs:
         run: npx nx affected:build
 
       - name: bump version
-        run: npx semver next-version -w nx -d
+        run: npx semver bump -w nx -d
 
       - name: check ts-import-move dist exists
         id: check_ts-import-move_dist
