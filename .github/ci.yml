@@ -1,0 +1,68 @@
+name: ci
+on:
+  push:
+    branches: ['main', 'releases/**']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Set base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v3
+
+        # install dependencies for root and all sub packages
+      - name: install dependencies
+        run: npm ci
+
+      - name: test affected
+        run: npx nx affected:test --ci --code-coverage
+      - name: lint affected
+        run: npx nx affected:lint
+      - name: build affected
+        run: npx nx affected:build
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+
+      # install dependencies for root and all sub packages
+      - name: install dependencies
+        run: npm ci
+
+      - name: build affected
+        run: npx nx affected:build --base=origin/main~1 --head=HEAD
+
+      - name: bump version
+        run: npx semver next-version -w nx -d
+
+      # - name: check semver dist exists
+      #   id: check_semver_dist
+      #   uses: andstor/file-existence-action@v1
+      #   with:
+      #     files: 'dist/packages/semver/package.json'
+
+      # - name: publish semver
+      #   if: steps.check_semver_dist.outputs.files_exists == 'true'
+      #   working-directory: dist/packages/semver
+      #   run: npm publish --ignore-scripts --access public
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -4,10 +4,12 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
+  "workspaces": ["packages/ts-import-move"],
   "dependencies": {
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@inova/semver": "^1.1.0-beta.6",
     "@nrwl/cli": "15.0.1",
     "@nrwl/eslint-plugin-nx": "15.0.1",
     "@nrwl/jest": "15.0.1",
