@@ -1,6 +1,7 @@
 # @itlabs/ts-import-move
 
-If you have moved a class, function, component or whatever in your monorepo, from one library to another, it can be a lot of work to update all imports if you are using typescript paths aliases e.g.
+It can be a lot of work to update all imports, if you moved a class, function, component or whatever from one library of your monorepo to another.
+If you are using relative paths for the imports, tools like visual studio code would ask you to perform these import updates for you. But not if you are using typescript paths aliases in your monorepo e.g.
 
 ```json
 "paths": {
@@ -9,13 +10,11 @@ If you have moved a class, function, component or whatever in your monorepo, fro
 }
 ```
 
-If you are using relative paths for the imports, tools like visual studio code would ask you to perform these import updates for you.
-
-If the former is the case, you just found the tool that would helps you :)
+In this case, you just found the tool that will helps you :)
 
 ## CLI
 
-*An CLI is coming soon.*
+_An CLI is coming soon._
 
 ## Library
 
