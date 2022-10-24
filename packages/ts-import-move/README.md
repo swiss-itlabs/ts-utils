@@ -1,11 +1,41 @@
-# ts-import-move
+# @itlabs/ts-import-move
 
-This library was generated with [Nx](https://nx.dev).
+If you have moved a class, function, component or whatever in your monorepo, from one library to another, it can be a lot of work to update all imports if you are using typescript paths aliases e.g.
 
-## Building
+```json
+"paths": {
+    "@itlabs/my-package": ["packages/my-package/src/index.ts"],
+    "@itlabs/my-new-package": ["packages/my-new-package/src/index.ts"]
+}
+```
 
-Run `nx build ts-import-move` to build the library.
+If you are using relative paths for the imports, tools like visual studio code would ask you to perform these import updates for you.
 
-## Running unit tests
+If the former is the case, you just found the tool that would helps you :)
 
-Run `nx test ts-import-move` to execute the unit tests via [Jest](https://jestjs.io).
+## CLI
+
+*An CLI is coming soon.*
+
+## Library
+
+Just install those two packages `npm i -D @itlabs/ts-import-move ts-morph`. And copy and adapt this snippet somewhere to your tooling scripts.
+
+```ts
+import { Project } from 'ts-morph';
+import { tsImportMove } from '@itlabs/ts-import-move';
+
+async function move(): Promise<void> {
+  const project = new Project({ tsConfigFilePath: 'path/to/tsconfig.json' });
+
+  tsImportMove(project, {
+    imports: ['ObjectToMove'],
+    sourcePackage: '@itlabs/my-package',
+    targetPackage: '@itlabs/my-new-package',
+  });
+
+  await project.save();
+}
+```
+
+Check the [ts-morph docs](https://ts-morph.com/setup/) for further information how to load your typescript project.
