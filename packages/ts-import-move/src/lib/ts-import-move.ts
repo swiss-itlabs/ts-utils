@@ -2,7 +2,7 @@ import { TsImportMoveArgs } from './models';
 import { ImportDeclaration, ImportSpecifier, Project, SourceFile } from 'ts-morph';
 
 /**
- * Moves an import of one import statement to another. See `TsImportMoveArgs`.
+ * Moves an import from one import statement to another. See `TsImportMoveArgs`.
  * @param project The typescript project. Check https://ts-morph.com/setup/
  * @param args Instructions for the move.
  */
