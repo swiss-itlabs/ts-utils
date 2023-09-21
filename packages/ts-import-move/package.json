@@ -12,6 +12,6 @@
     "nx"
   ],
   "dependencies": {
-    "ts-morph": "^16.0.0"
+    "ts-morph": "^19.0.0"
   }
 }
