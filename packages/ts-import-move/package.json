@@ -1,6 +1,6 @@
 {
   "name": "@itlabs/ts-import-move",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.6",
   "description": "move typescript imports from one package to another",
   "author": "Admir Ramic",
   "license": "MIT",
